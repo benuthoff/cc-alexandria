@@ -1,10 +1,10 @@
 -- Alexandria Install Script
 
--- Step 1: Create Necessary Directories
+-- Step 1: Create App Directory
 
--- Step 2: Add Directories to Path
+-- Step 2: Add App Directory to Path
 
--- Step 3: Download CLI Script
+-- Step 3: Download Application
 
--- Step 4: Creat the Config File
+-- Step 4: Create Settings
 
