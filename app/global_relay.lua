@@ -1,0 +1,2 @@
+-- Global Relay Server
+-- Uses Ender Modems to Allow Cross-World Communication
