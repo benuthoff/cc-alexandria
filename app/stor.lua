@@ -1,2 +1,2 @@
 -- Stor
--- Storage Manager App
+-- Disk Storage Manager
