@@ -8,6 +8,6 @@ if req == nil then
 	printError('[ERR] Could not download program "'..name..'".')
 else
 	local file = fs.open('/app/'..name..'.lua','w')
-	file.write(data)
+	file.write(req.readAll())
 	file.close()
 end
