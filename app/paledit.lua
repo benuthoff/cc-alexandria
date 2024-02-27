@@ -10,6 +10,7 @@ color_names = {
 	'brown', 'green', 'red', 'black'
 }
 
+palette_size = 2
 palette_gallery = {'default','apela'}
 default_palettes = {}
 default_palettes['default'] = {
@@ -32,6 +33,8 @@ if not args[1] then
 	print('Usage: paledit show    - shows all terminal colors')
 	print('       paledit gallery - show a carousel of palettes')
 	print('       paledit [name]  - sets the palette to [name]')
+elseif args[1] == 'startup' then
+	shell.run('paledit', settings.get('paledit.palette', 'default'), 'quiet')
 elseif args[1] == 'show' then
 	print('')
 	term.blit('                ','0000000000000000','0011223344556677')
@@ -40,29 +43,48 @@ elseif args[1] == 'show' then
 	print('\n')
 elseif args[1] == 'gallery' then
 
-	local width
-
 	print('')
 	term.blit('                ','0000000000000000','0011223344556677')
 	print('')
 	term.blit('                ','0000000000000000','8899aabbccddeeff')
-	print('')
+	print('\n')
 
 	local w, h = term.getSize()
 	local x, y = term.getCursorPos()
 	local i = 1;
+	shell.run('paledit', palette_gallery[i])
+	term.write(' <- default ->  | Q to Quit')
 
 	while true do
 		local event, key = os.pullEvent('key_up')
+		local kn = keys.getName(key);
 		for r=1,w do term.setCursorPos(r,y) term.blit(' ','0','f') end
 		term.setCursorPos(x,y)
-		term.write(' <- '..palette_gallery[i]..' ->  |  Press Q to Quit')
-		term.write(' ['..keys.getName(key)..']')
+
+		if kn == 'q' then
+			shell.run('paledit', 'startup')
+			break
+		elseif kn == 'right' then
+			i = i + 1
+			if i > palette_size then i = 1 end
+			shell.run('paledit', palette_gallery[i])
+		elseif kn == 'left' then
+			i = i - 1
+			if i < 1 then i = palette_size end
+			shell.run('paledit', palette_gallery[i])
+		end
+
+		term.write(' <- '..palette_gallery[i]..' ->  | Q to Quit')
+
 	end
 
 elseif default_palettes[args[1]] then
-	print('Palette set to \''..args[1]..'\'!')
 	for i=1,16 do
 		term.setPaletteColor(colors[color_names[i]],default_palettes[args[1]][i])
+	end
+	settings.set('paledit.palette',args[1])
+	settings.save()
+	if not args[2] == 'quiet' then
+		print('Palette set to '..args[1]..'!')
 	end
 end
