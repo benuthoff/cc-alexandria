@@ -18,3 +18,5 @@ else
 	term.setTextColor(colors.lime)
 	print('[ Operation Successful ]')
 end
+
+req.close()
