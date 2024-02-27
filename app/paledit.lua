@@ -29,15 +29,38 @@ local args = {...}
 
 if not args[1] then
 	print('Paledit - Terminal Palette Editor')
-	print('Usage: paledit show   - shows all terminal colors')
-	print('       paledit [name] - sets the palette to [name]')
+	print('Usage: paledit show    - shows all terminal colors')
+	print('       paledit gallery - show a carousel of palettes')
+	print('       paledit [name]  - sets the palette to [name]')
 elseif args[1] == 'show' then
 	print('')
 	term.blit('                ','0000000000000000','0011223344556677')
 	print('')
 	term.blit('                ','0000000000000000','8899aabbccddeeff')
 	print('\n')
-elseif args[1] and default_palettes[args[1]] then
+elseif args[1] == 'gallery' then
+
+	local width
+
+	print('')
+	term.blit('                ','0000000000000000','0011223344556677')
+	print('')
+	term.blit('                ','0000000000000000','8899aabbccddeeff')
+	print('')
+
+	local w, h = term.getSize()
+	local x, y = term.getCursorPos()
+	local i = 1;
+
+	while true do
+		local event, key = os.pullEvent('key_up')
+		for r=1,w do term.setCursorPos(r,y) term.blit(' ','0','f') end
+		term.setCursorPos(x,y)
+		term.write(' <- '..palette_gallery[i]..' ->  |  Press Q to Quit')
+		term.write(' ['..keys.getName(key)..']')
+	end
+
+elseif default_palettes[args[1]] then
 	print('Palette set to \''..args[1]..'\'!')
 	for i=1,16 do
 		term.setPaletteColor(colors[color_names[i]],default_palettes[args[1]][i])
