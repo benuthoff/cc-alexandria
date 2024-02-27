@@ -10,6 +10,7 @@ color_names = {
 	'brown', 'green', 'red', 'black'
 }
 
+palette_gallery = {'default','apela'}
 default_palettes = {}
 default_palettes['default'] = {
 	0xF0F0F0, 0xF2B233, 0xE57FD8, 0x99B2F2,
@@ -26,7 +27,11 @@ default_palettes['apela'] = {
 
 local args = {...}
 
-if args[1] == 'show' then
+if not args[1] then
+	print('Paledit - Terminal Palette Editor')
+	print('Usage: paledit show   - shows all terminal colors')
+	print('       paledit [name] - sets the palette to [name]')
+elseif args[1] == 'show' then
 	print('')
 	term.blit('                ','0000000000000000','0011223344556677')
 	print('')
