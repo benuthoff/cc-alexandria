@@ -1,5 +1,5 @@
 -- Alexandria, CC:Tweaked Package Manager
--- Usage: alexandria ~~[action]~~ [name]
+-- Usage: alexandria [name]
 
 local name = ...
 local req = http.get('http://raw.githubusercontent.com/benuthoff/cc-alexandria/main/app/'..name..'.lua')
