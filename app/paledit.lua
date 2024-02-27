@@ -10,8 +10,8 @@ color_names = {
 	'brown', 'green', 'red', 'black'
 }
 
-palette_size = 2
-palette_gallery = {'default','apela'}
+palette_size = 3
+palette_gallery = {'default','apela','cottage'}
 default_palettes = {}
 default_palettes['default'] = {
 	0xF0F0F0, 0xF2B233, 0xE57FD8, 0x99B2F2,
@@ -24,6 +24,12 @@ default_palettes['apela'] = {
 	0xffd60a, 0x32d74b, 0xfe4439, 0x404044,
 	0x98989d, 0x479ec2, 0x9647bf, 0x0869cb,
 	0x6b4c40, 0x25a438, 0xcc372e, 0x1e1e1e
+}
+default_palettes['cottage'] = {
+	0xfff9d5, 0xe99d2a, 0xd09dca, 0xb8d3ed,
+	0xd0d150, 0x93cfd7, 0xbe2d26, 0x573d26,
+	0x9b6c4a, 0x6ba18a, 0xac80a6, 0x74a6ad,
+	0xe0dbb7, 0x95d8ba, 0xe84627, 0x2a1f1d
 }
 
 local args = {...}
