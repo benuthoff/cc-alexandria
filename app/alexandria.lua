@@ -16,5 +16,5 @@ else
 	file.write(req.readAll())
 	file.close()
 	term.setTextColor(colors.lime)
-	print('[ Opperation Successful ]')
+	print('[ Operation Successful ]')
 end

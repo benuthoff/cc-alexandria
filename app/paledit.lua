@@ -1,0 +1,2 @@
+-- Paledit
+-- Terminal Palette Editor
